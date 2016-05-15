@@ -72,7 +72,7 @@ Temporary Items
 
 ### Hugo ###
 hugo.exe
-# /public/
+/public/
 
 ### Sass ###
 .sass-cache/

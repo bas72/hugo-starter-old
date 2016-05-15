@@ -1,0 +1,22 @@
+{
+  "root": {
+    "src": "./src",
+    "dest": "./public"
+  },
+
+  "tasks": {
+    "browserSync": {
+
+    },
+
+    "css": {
+      "src": "styles",
+      "dest": "styles",
+      "extensions": ["scss", "css"],
+      "sass": {
+        "indentedSyntax": false,
+        "includePaths": []
+      }
+    }
+  }
+}

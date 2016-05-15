@@ -2,22 +2,39 @@ import gulp from 'gulp';
 
 import config from '../config';
 
-import { processStyles } from './styles';
+import { stylesDev } from './styles';
+import { stylesProd } from './styles';
 
 gulp.task(
-  'styles',
-  gulp.parallel(processStyles)
+  'stylesDev',
+  gulp.series(stylesDev)
 );
-const stylesTask = gulp.task('styles');
-stylesTask.description = 'Pass through post-css';
+
+gulp.task(
+  'stylesProd',
+  gulp.series(stylesProd)
+);
+
+// Dev
+gulp.task(
+  'dev',
+  gulp.series(
+    'stylesDev'
+  )
+);
+
+// Production
+gulp.task(
+  'prod',
+  gulp.series(
+    'stylesProd'
+  )
+);
 
 // Default task
 gulp.task(
   'default',
   gulp.series(
-    'styles'
+    'dev'
   )
 );
-
-const defaultTask = gulp.task('default');
-defaultTask.description = 'Launch dev or prod default task.';
