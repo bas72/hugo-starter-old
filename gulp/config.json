@@ -1,6 +1,7 @@
 {
   "root": {
     "src": "./src",
+    "tmp": "./.tmp",
     "dest": "./public"
   },
 
@@ -17,6 +18,16 @@
         "indentedSyntax": false,
         "includePaths": []
       }
+    },
+    "js": {
+      "src": "scripts",
+      "dest": "scripts",
+      "extensions": ["js"]
+    },
+    "images": {
+      "src": "images",
+      "dest": "images",
+      "extensions": ["jpg", "png", "gif", "svg"]
     }
   }
 }

@@ -2,24 +2,26 @@ import gulp from 'gulp';
 
 import config from '../config';
 
-import { stylesDev } from './styles';
-import { stylesProd } from './styles';
+import { hugoAll, hugoDelete } from './hugo';
+import { cssDev, cssProd } from './css';
+import { js } from './js';
+import { images } from './images'
 
-gulp.task(
-  'stylesDev',
-  gulp.series(stylesDev)
-);
-
-gulp.task(
-  'stylesProd',
-  gulp.series(stylesProd)
-);
+// Singles
+gulp.task(hugoAll);
+gulp.task(hugoDelete);
+gulp.task(cssDev);
+gulp.task(cssProd);
+gulp.task(js);
+gulp.task(images);
 
 // Dev
 gulp.task(
   'dev',
   gulp.series(
-    'stylesDev'
+    gulp.parallel(cssDev, js, images),
+    'hugoDelete',
+    'hugoAll'
   )
 );
 
@@ -27,7 +29,8 @@ gulp.task(
 gulp.task(
   'prod',
   gulp.series(
-    'stylesProd'
+    gulp.parallel(cssProd, js, images),
+    'hugoAll'
   )
 );
 
