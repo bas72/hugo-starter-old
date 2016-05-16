@@ -26,12 +26,7 @@ function hugo(drafts) {
     gutil.log('hugo: \n' + result);
 }
 
-// gulp.task('hugo:draft', function() {
-//     hugo(true);
-// });
-
-// gulp.task('hugo:all', ['hugo:delete'], function() {
-export function hugoAll(done) {
+export function hugoDev(done) {
     hugo(true);
     done();
 }
@@ -46,10 +41,10 @@ export function hugoDelete(done) {
 }
 
 // gulp.task('hugo:live', ['hugo:delete'], function() {
-// export function hugoProd(done) {
-//     hugo(false);
-//     done();
-// });
+export function hugoProd(done) {
+    hugo(false);
+    done();
+}
 
 // gulp.task('hugo:live', ['hugo:delete'], function() {
 //     hugo(false);
