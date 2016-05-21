@@ -5,3 +5,16 @@ h1 {
 h2 {
   color: purple;
 }
+
+h3 {
+  color: red;
+}
+
+p {
+  color: yellow;
+  font-size: 40px;
+}
+
+h5 {
+  color: gray;
+}

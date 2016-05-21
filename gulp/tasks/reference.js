@@ -6,7 +6,7 @@ import path from 'path'
 import config from '../config.json'
 
 export function referenceContent() {
-    const manifest = gulp.src('public/rev-manifest.json');
+    let manifest = gulp.src('public/rev-manifest.json');
 
     return gulp.src(['public/**/*.html', 'public/**/*.xml', 'public/**/*.css'])
         .pipe(replace({manifest: manifest}))
@@ -15,7 +15,7 @@ export function referenceContent() {
 }
 
 export function referenceAll() {
-    const manifest = gulp.src('public/rev-manifest.json');
+    let manifest = gulp.src('public/rev-manifest.json');
 
     return gulp.src(['public/**/*.html', 'public/**/*.xml', 'public/**/*.css'])
         .pipe(replace({manifest: manifest, replaceInExtensions: ['.html', '.xml', '.css']}))

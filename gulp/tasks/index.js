@@ -2,7 +2,7 @@ import gulp from 'gulp';
 
 import config from '../config';
 
-import { serve } from './serve';
+import { serve, reload } from './serve';
 import { watch } from './watch';
 import { referenceContent, referenceAll } from './reference';
 import { hugoDev, hugoProd, hugoDelete } from './hugo';
@@ -26,12 +26,11 @@ gulp.task(js);
 gulp.task(images);
 
 // Builds
-var reload = require("browser-sync").reload;
 
 //DONT include hugoDelete
 gulp.task(
   'buildContent',
-  gulp.series(referenceContent, hugoDev)
+  gulp.series(hugoDev, referenceContent)
 )
 
 gulp.task(
@@ -42,7 +41,7 @@ gulp.task(
     'hugoDelete',
     'hugoDev',
     'referenceAll',
-    reload,
+    //reload,
     gulp.parallel(serve, watch)
   )
 );
@@ -79,6 +78,6 @@ gulp.task(
 gulp.task(
   'default',
   gulp.series(
-    'dev'
+    'buildDev'
   )
 );
