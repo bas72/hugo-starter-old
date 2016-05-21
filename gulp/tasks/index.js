@@ -41,7 +41,6 @@ gulp.task(
     'hugoDelete',
     'hugoDev',
     'referenceAll',
-    //reload,
     gulp.parallel(serve, watch)
   )
 );
@@ -53,8 +52,7 @@ gulp.task(
     'revision',
     'hugoDelete',
     'hugoProd',
-    'referenceAll',
-    reload
+    'referenceAll'
   )
 );
 
@@ -62,7 +60,7 @@ gulp.task(
 gulp.task(
   'dev',
   gulp.series(
-    'serve'
+    'buildDev'
   )
 );
 

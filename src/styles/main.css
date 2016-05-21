@@ -1,20 +1,11 @@
 h1 {
-  color: blue;
-}
-
-h2 {
   color: purple;
 }
 
-h3 {
+p {
   color: red;
 }
 
-p {
-  color: yellow;
-  font-size: 40px;
-}
-
-h5 {
-  color: gray;
+h2 {
+  color: green;
 }

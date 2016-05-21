@@ -14,7 +14,7 @@ import config from '../config.json'
 const paths = {
   css: path.join(config.root.src, config.tasks.css.src, '/**/*.{' + config.tasks.css.extensions + '}'),
   js: path.join(config.root.src, config.tasks.js.src, '/**/*.{' + config.tasks.js.extensions + '}'),
-  css: path.join(config.root.src, config.tasks.images.src, '/**/*.{' + config.tasks.images.extensions + '}'),
+  images: path.join(config.root.src, config.tasks.images.src, '/**/*.{' + config.tasks.images.extensions + '}')
 }
 
 export function watch(done) {
@@ -22,14 +22,13 @@ export function watch(done) {
   gulp.watch(['hugo/layouts/**/*', 'hugo/content/**/*', 'hugo/archetypes/**/*']).on("change", gulp.series(hugoDev, referenceContent, reload));
 
   // css
-  gulp.watch('src/styles/*.css',
-   gulp.series(cssDev, revision, hugoDelete, hugoDev, referenceAll, reload));
+  gulp.watch(paths.css, gulp.series(cssDev, revision, hugoDelete, hugoDev, referenceAll, reload));
 
   // js
-  gulp.watch('src/scripts/*.js', gulp.series(js, revision, hugoDelete, hugoDev, referenceAll, reload));
+  gulp.watch(paths.js, gulp.series(js, revision, hugoDelete, hugoDev, referenceAll, reload));
 
   // Images
-  gulp.watch('src/images/*.*', gulp.series(images, revision, hugoDelete, hugoDev, referenceAll, reload));
+  gulp.watch(paths.images, gulp.series(images, revision, hugoDelete, hugoDev, referenceAll, reload));
 
   done();
 }

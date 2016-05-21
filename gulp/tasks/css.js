@@ -34,6 +34,6 @@ export function cssProd() {
   return gulp.src(paths.src)
     .pipe(sass(config.tasks.css.sass))
     .pipe(postcss(processorsProd))
-    .pipe(sourcemaps.write())
+    // .pipe(sourcemaps.write())
     .pipe(gulp.dest(paths.dest));
 }
