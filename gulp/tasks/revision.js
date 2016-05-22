@@ -11,11 +11,16 @@ const paths = {
   images: path.join(config.root.tmp, config.tasks.images.dest, '/**/*.{' + config.tasks.images.extensions + '}')
 }
 
-export function revision() {
+export function revisionDev() {
+    return gulp.src([paths.css, paths.js, paths.images], {base: path.join(process.cwd(), '.tmp')})
+        .pipe(gulp.dest('public'));
+}
+
+export function revisionProd() {
     return gulp.src([paths.css, paths.js, paths.images], {base: path.join(process.cwd(), '.tmp')})
         .pipe(rev())
-        .pipe(gulp.dest('hugo/static'))
+        .pipe(gulp.dest('public'))
         .pipe(rev.manifest())
-        .pipe(del({dest: 'hugo/static'}))
-        .pipe(gulp.dest('hugo/static'));
+        .pipe(del({dest: 'public'}))
+        .pipe(gulp.dest('public'));
 }

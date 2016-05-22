@@ -4,7 +4,7 @@ import { serve, reload } from './serve';
 //import { referenceContent, referenceAll } from './reference';
 import { hugoDev, hugoProd, hugoDelete } from './hugo';
 // import { revision } from './revision';
-import { revisionDev } from './revisionDev';
+import { revisionDev } from './revision';
 import { cssDev, cssProd } from './css';
 import { js } from './js';
 import { images } from './images'
@@ -23,13 +23,13 @@ export function watch(done) {
   gulp.watch(['hugo/layouts/**/*', 'hugo/content/**/*', 'hugo/archetypes/**/*']).on("change", gulp.series(hugoDev, reload));
 
   // css
-  gulp.watch(paths.css, gulp.series(cssDev, revisionDev, hugoDelete, hugoDev, reload));
+  gulp.watch(paths.css, gulp.series(cssDev, hugoDelete, hugoDev, revisionDev, reload));
 
   // js
-  gulp.watch(paths.js, gulp.series(js, revisionDev, hugoDelete, hugoDev, reload));
+  gulp.watch(paths.js, gulp.series(js, hugoDelete, hugoDev, revisionDev, reload));
 
   // Images
-  gulp.watch(paths.images, gulp.series(images, revisionDev, hugoDelete, hugoDev, reload));
+  gulp.watch(paths.images, gulp.series(images, hugoDelete, hugoDev, revisionDev, reload));
 
   done();
 }

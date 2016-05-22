@@ -2,24 +2,23 @@ import gulp from 'gulp';
 
 import config from '../config';
 
-import { serve, reload } from './serve';
-import { watch } from './watch';
-import { referenceContent, referenceAll } from './reference';
-import { hugoDev, hugoProd, hugoDelete } from './hugo';
-import { revision } from './revision';
-import { revisionDev } from './revisionDev';
+import { serve, reload } from './serve.js';
+import { watch } from './watch.js';
+import { referenceContent, referenceAll } from './reference.js';
+import { hugoDev, hugoProd, hugoDelete } from './hugo.js';
+import { revisionDev, revisionProd } from './revision.js';
 import { cssDev, cssProd } from './css';
-import { js } from './js';
-import { images } from './images'
+import { js } from './js.js';
+import { images } from './images.js'
 
 // Builds
 gulp.task(
   'dev',
   gulp.series(
     gulp.parallel(cssDev, js, images),
-    revisionDev,
     hugoDelete,
     hugoDev,
+    revisionDev,
     gulp.parallel(serve, watch)
   )
 );
@@ -28,9 +27,9 @@ gulp.task(
   'prod',
   gulp.series(
     gulp.parallel(cssProd, js, images),
-    revision,
     hugoDelete,
     hugoProd,
+    revisionProd,
     referenceAll
   )
 );
