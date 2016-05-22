@@ -1,9 +1,10 @@
 import gulp from 'gulp';
 
 import { serve, reload } from './serve';
-import { referenceContent, referenceAll } from './reference';
+//import { referenceContent, referenceAll } from './reference';
 import { hugoDev, hugoProd, hugoDelete } from './hugo';
-import { revision } from './revision';
+// import { revision } from './revision';
+import { revisionDev } from './revisionDev';
 import { cssDev, cssProd } from './css';
 import { js } from './js';
 import { images } from './images'
@@ -19,16 +20,16 @@ const paths = {
 
 export function watch(done) {
   // Content
-  gulp.watch(['hugo/layouts/**/*', 'hugo/content/**/*', 'hugo/archetypes/**/*']).on("change", gulp.series(hugoDev, referenceContent, reload));
+  gulp.watch(['hugo/layouts/**/*', 'hugo/content/**/*', 'hugo/archetypes/**/*']).on("change", gulp.series(hugoDev, reload));
 
   // css
-  gulp.watch(paths.css, gulp.series(cssDev, revision, hugoDelete, hugoDev, referenceAll, reload));
+  gulp.watch(paths.css, gulp.series(cssDev, revisionDev, hugoDelete, hugoDev, reload));
 
   // js
-  gulp.watch(paths.js, gulp.series(js, revision, hugoDelete, hugoDev, referenceAll, reload));
+  gulp.watch(paths.js, gulp.series(js, revisionDev, hugoDelete, hugoDev, reload));
 
   // Images
-  gulp.watch(paths.images, gulp.series(images, revision, hugoDelete, hugoDev, referenceAll, reload));
+  gulp.watch(paths.images, gulp.series(images, revisionDev, hugoDelete, hugoDev, reload));
 
   done();
 }

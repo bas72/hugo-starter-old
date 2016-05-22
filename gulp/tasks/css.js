@@ -10,7 +10,7 @@ import config from '../config.json'
 
 const paths = {
   src: path.join(config.root.src, config.tasks.css.src, '/**/*.{' + config.tasks.css.extensions + '}'),
-  dest: path.join(config.root.tmp, config.tasks.css.dest)
+  dest: path.join(config.root.tmp, config.tasks.css.dest),
 }
 
 // Processors
@@ -27,6 +27,7 @@ export function cssDev() {
   return gulp.src(paths.src)
     .pipe(sass(config.tasks.css.sass))
     .pipe(postcss(processorsDev))
+    // .pipe(postcss([autoprefixer]))
     .pipe(gulp.dest(paths.dest));
 }
 

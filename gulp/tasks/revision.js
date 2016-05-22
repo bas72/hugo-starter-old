@@ -11,7 +11,6 @@ const paths = {
   images: path.join(config.root.tmp, config.tasks.images.dest, '/**/*.{' + config.tasks.images.extensions + '}')
 }
 
-//gulp.task('revision', ['styles','scripts', 'images', 'svg'], function() {
 export function revision() {
     return gulp.src([paths.css, paths.js, paths.images], {base: path.join(process.cwd(), '.tmp')})
         .pipe(rev())

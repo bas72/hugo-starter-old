@@ -28,6 +28,12 @@
       "src": "images",
       "dest": "images",
       "extensions": ["jpg", "png", "gif", "svg"]
+    },
+    "hugo": {
+      "layouts": "layouts",
+      "content": "content",
+      "archetypes": "archetypes",
+      "extensions": ""
     }
   }
 }
