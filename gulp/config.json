@@ -30,9 +30,9 @@
       "extensions": ["jpg", "png", "gif", "svg"]
     },
     "hugo": {
-      "layouts": "layouts",
-      "content": "content",
-      "archetypes": "archetypes",
+      "layouts": "hugo/layouts",
+      "content": "hugo/content",
+      "archetypes": "hugo/archetypes",
       "extensions": ""
     }
   }

@@ -20,7 +20,7 @@ const paths = {
 
 export function watch(done) {
   // Content
-  gulp.watch(['hugo/layouts/**/*', 'hugo/content/**/*', 'hugo/archetypes/**/*']).on("change", gulp.series(hugoDev, reload));
+  gulp.watch(['src/hugo/layouts/**/*', 'src/hugo/content/**/*', 'src/hugo/archetypes/**/*']).on("change", gulp.series(hugoDev, reload));
 
   // css
   gulp.watch(paths.css, gulp.series(cssDev, hugoDelete, hugoDev, revisionDev, reload));

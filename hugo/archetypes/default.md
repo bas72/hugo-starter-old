@@ -1,6 +1,0 @@
----
-
-tags: "hello"
-categories: "hi"
-
----

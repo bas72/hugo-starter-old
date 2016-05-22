@@ -2,14 +2,14 @@ import gulp from 'gulp';
 
 import config from '../config';
 
-import { serve, reload } from './serve.js';
-import { watch } from './watch.js';
-import { referenceContent, referenceAll } from './reference.js';
-import { hugoDev, hugoProd, hugoDelete } from './hugo.js';
-import { revisionDev, revisionProd } from './revision.js';
+import { serve, reload } from './serve';
+import { watch } from './watch';
+import { referenceContent, referenceAll } from './reference';
+import { hugoDev, hugoProd, hugoDelete } from './hugo';
+import { revisionDev, revisionProd } from './revision';
 import { cssDev, cssProd } from './css';
-import { js } from './js.js';
-import { images } from './images.js'
+import { js } from './js';
+import { images } from './images'
 
 // Builds
 gulp.task(
