@@ -1,16 +1,16 @@
 {
-  "name": "hugulp",
+  "name": "hugo-starter",
   "version": "0.1.0",
-  "description": "website",
-  "main": "index.js",
+  "description": "starter pack for hugo",
+  "main": "app.js",
   "scripts": {
     "start": "gulp",
     "dev": "gulp dev",
     "prod": "gulp prod",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Juan B. Rodriguez",
-  "license": "MIT",
+  "author": "Steve Basford",
+  "license": "TBC",
   "devDependencies": {
     "autoprefixer": "^6.3.6",
     "babel-core": "^6.8.0",
