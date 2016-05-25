@@ -27,7 +27,6 @@ export function cssDev() {
   return gulp.src(paths.src)
     .pipe(sass(config.tasks.css.sass))
     .pipe(postcss(processorsDev))
-    // .pipe(postcss([autoprefixer]))
     .pipe(gulp.dest(paths.dest));
 }
 
