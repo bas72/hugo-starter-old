@@ -1,18 +1,20 @@
-import gulp from 'gulp';
-import imagemin from 'gulp-imagemin';
-import changed from 'gulp-changed';
+import gulp           from 'gulp';
+import imagemin       from 'gulp-imagemin';
+import changed        from 'gulp-changed';
 
-import path from 'path'
-import config from '../config.json'
+import path           from 'path'
+import { loadConfig } from './config';
 
-const paths = {
-  src: path.join(config.root.src, config.tasks.images.src, '/**/*.{' + config.tasks.images.extensions + '}'),
-  dest: path.join(config.root.tmp, config.tasks.images.dest)
+const { PATHS, TASKS } = loadConfig();
+
+const imgPaths = {
+  src: path.join(PATHS.src, PATHS.images, '/**/*.{' + TASKS.images.extensions + '}'),
+  dest: path.join(PATHS.tmp, PATHS.images),
 }
 
 export function images() {
-  return gulp.src(paths.src)
-    .pipe(changed(paths.dest))
+  return gulp.src(imgPaths.src)
+    .pipe(changed(imgPaths.dest))
     .pipe(imagemin())
-    .pipe(gulp.dest(paths.dest));
+    .pipe(gulp.dest(imgPaths.dest));
 }

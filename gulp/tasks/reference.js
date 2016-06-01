@@ -3,7 +3,10 @@ import replace from 'gulp-rev-replace';
 import size from 'gulp-size';
 
 import path from 'path'
-import config from '../config.json'
+//import config from '../config.json'
+import { loadConfig } from './config';
+
+const { PATHS, TASKS } = loadConfig();
 
 export function referenceContent() {
     let manifest = gulp.src('public/rev-manifest.json');

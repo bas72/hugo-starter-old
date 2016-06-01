@@ -1,6 +1,7 @@
-import gulp from 'gulp';
-
-import config from '../config';
+import yargs from 'yargs';
+import gulp   from 'gulp';
+import yaml   from 'js-yaml';
+import { loadConfig } from './config';
 
 import { serve, reload } from './serve';
 import { watch } from './watch';
@@ -10,6 +11,9 @@ import { revisionDev, revisionProd } from './revision';
 import { cssDev, cssProd } from './css';
 import { js } from './js';
 import { images } from './images'
+
+const PRODUCTION = !!(yargs.argv.production);
+const { PATHS, TASKS } = loadConfig();
 
 // Builds
 gulp.task(

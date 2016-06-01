@@ -1,0 +1,8 @@
+---
+
+baseurl: "http://hugo-starter/"
+languageCode: "en-us"
+title: "hugo starter project"
+MetaDataFormat: yml
+
+---

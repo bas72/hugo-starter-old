@@ -3,17 +3,19 @@ import jshint from 'gulp-jshint';
 import uglify from 'gulp-uglify';
 
 import path from 'path'
-import config from '../config.json'
+import { loadConfig } from './config';
 
-const paths = {
-  src: path.join(config.root.src, config.tasks.js.src, '/**/*.{' + config.tasks.js.extensions + '}'),
-  dest: path.join(config.root.tmp, config.tasks.js.dest)
+const { PATHS, TASKS } = loadConfig();
+
+const jsPaths = {
+  src: path.join(PATHS.src, PATHS.js, '/**/*.{' + TASKS.js.extensions + '}'),
+  dest: path.join(PATHS.tmp, PATHS.js),
 }
 
 export function js() {
-    return gulp.src(paths.src)
+    return gulp.src(jsPaths.src)
         .pipe(jshint())
         .pipe(jshint.reporter("default"))
         .pipe(uglify())
-        .pipe(gulp.dest(paths.dest));
+        .pipe(gulp.dest(jsPaths.dest));
 }
