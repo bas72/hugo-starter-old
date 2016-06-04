@@ -16,14 +16,14 @@ const revPaths = {
 
 export function revisionDev() {
     return gulp.src([revPaths.css, revPaths.js, revPaths.images], {base: path.join(process.cwd(), '.tmp')})
-        .pipe(gulp.dest('PATHS.dest'));
+        .pipe(gulp.dest(PATHS.dest));
 }
 
 export function revisionProd() {
     return gulp.src([revPaths.css, revPaths.js, revPaths.images], {base: path.join(process.cwd(), '.tmp')})
         .pipe(rev())
-        .pipe(gulp.dest('PATHS.dest'))
+        .pipe(gulp.dest(PATHS.dest))
         .pipe(rev.manifest())
-        .pipe(del({dest: 'PATHS.dest'}))
-        .pipe(gulp.dest('PATHS.dest'));
+        .pipe(del({dest: PATHS.dest}))
+        .pipe(gulp.dest(PATHS.dest));
 }

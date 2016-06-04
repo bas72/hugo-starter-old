@@ -16,7 +16,6 @@ TASKS:
     sass:
       indentedSyntax: false
       includePaths:
-        -
 
   js:
     extensions:
