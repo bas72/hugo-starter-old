@@ -5,14 +5,14 @@ import changed from 'gulp-changed';
 import path from 'path'
 import config from '../config.json'
 
-const paths = {
-  src: path.join(config.root.src, config.tasks.images.src, '/**/*.{' + config.tasks.images.extensions + '}'),
-  dest: path.join(config.root.tmp, config.tasks.images.dest)
+const taskPaths = {
+  src: path.join(config.PATHS.src, config.PATHS.images, '/**/*.{' + config.TASKS.images.extensions + '}'),
+  dest: path.join(config.PATHS.tmp, config.PATHS.images)
 }
 
 export function images() {
-  return gulp.src(paths.src)
-    .pipe(changed(paths.dest))
+  return gulp.src(taskPaths.src)
+    .pipe(changed(taskPaths.dest))
     .pipe(imagemin())
-    .pipe(gulp.dest(paths.dest));
+    .pipe(gulp.dest(taskPaths.dest));
 }

@@ -1,12 +1,14 @@
 import gulp from 'gulp';
 var exec = require('child_process').execSync;
 import gutil from 'gulp-util';
-import path from 'path';
 import del from 'del';
 
+import path from 'path'
+import config from '../config.json'
+
 function hugo(drafts) {
-    var src = path.join(process.cwd(), 'src/hugo');
-    var dst = path.join(process.cwd(), 'public');
+    var src = path.join(process.cwd(), config.PATHS.hugo);
+    var dst = path.join(process.cwd(), config.PATHS.dest);
 
     gutil.log('src: ' + src + ' dst: ' + dst);
 
@@ -25,8 +27,8 @@ export function hugoDev(done) {
 }
 
 export function hugoDelete(done) {
-    var dst1 = path.join(process.cwd(), 'public');
-    var dst2 = path.join(process.cwd(), 'src/hugo', 'public');
+    var dst1 = path.join(process.cwd(), config.PATHS.dest);
+    var dst2 = path.join(process.cwd(), config.PATHS.hugo, config.PATHS.dest);
     del.sync(dst1);
     del.sync(dst2);
     done();

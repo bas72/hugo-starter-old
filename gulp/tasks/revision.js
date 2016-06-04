@@ -5,22 +5,22 @@ import del from 'rev-del';
 import path from 'path'
 import config from '../config.json'
 
-const paths = {
-  css: path.join(config.root.tmp, config.tasks.css.dest, '/**/*.{' + config.tasks.css.extensions + '}'),
-  js: path.join(config.root.tmp, config.tasks.js.dest, '/**/*.{' + config.tasks.js.extensions + '}'),
-  images: path.join(config.root.tmp, config.tasks.images.dest, '/**/*.{' + config.tasks.images.extensions + '}')
+const taskPaths = {
+  css: path.join(config.PATHS.tmp, config.PATHS.css, '/**/*.{' + config.TASKS.css.extensions + '}'),
+  js: path.join(config.PATHS.tmp, config.PATHS.js, '/**/*.{' + config.TASKS.js.extensions + '}'),
+  images: path.join(config.PATHS.tmp, config.PATHS.images, '/**/*.{' + config.TASKS.images.extensions + '}')
 }
 
 export function revisionDev() {
-    return gulp.src([paths.css, paths.js, paths.images], {base: path.join(process.cwd(), '.tmp')})
-        .pipe(gulp.dest('public'));
+    return gulp.src([taskPaths.css, taskPaths.js, taskPaths.images], {base: path.join(process.cwd(), '.tmp')})
+        .pipe(gulp.dest(config.PATHS.dest));
 }
 
 export function revisionProd() {
-    return gulp.src([paths.css, paths.js, paths.images], {base: path.join(process.cwd(), '.tmp')})
+    return gulp.src([taskPaths.css, taskPaths.js, taskPaths.images], {base: path.join(process.cwd(), '.tmp')})
         .pipe(rev())
-        .pipe(gulp.dest('public'))
+        .pipe(gulp.dest(config.PATHS.dest))
         .pipe(rev.manifest())
-        .pipe(del({dest: 'public'}))
-        .pipe(gulp.dest('public'));
+        .pipe(del({dest: config.PATHS.dest}))
+        .pipe(gulp.dest(config.PATHS.dest));
 }

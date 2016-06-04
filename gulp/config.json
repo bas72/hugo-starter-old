@@ -1,18 +1,18 @@
 {
-  "root": {
+  "PATHS": {
     "src": "./src",
     "tmp": "./.tmp",
-    "dest": "./public"
+    "dest": "./public",
+    "css": "css",
+    "js": "js",
+    "images": "img",
+    "hugo": "src/hugo"
   },
 
-  "tasks": {
-    "browserSync": {
-
-    },
+  "TASKS": {
+    "browserSync": {},
 
     "css": {
-      "src": "styles",
-      "dest": "styles",
       "extensions": ["scss", "css"],
       "sass": {
         "indentedSyntax": false,
@@ -20,13 +20,9 @@
       }
     },
     "js": {
-      "src": "scripts",
-      "dest": "scripts",
       "extensions": ["js"]
     },
     "images": {
-      "src": "images",
-      "dest": "images",
       "extensions": ["jpg", "png", "gif", "svg"]
     },
     "hugo": {

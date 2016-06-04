@@ -8,9 +8,9 @@ import cssnano from 'cssnano';
 import path from 'path'
 import config from '../config.json'
 
-const paths = {
-  src: path.join(config.root.src, config.tasks.css.src, '/**/*.{' + config.tasks.css.extensions + '}'),
-  dest: path.join(config.root.tmp, config.tasks.css.dest),
+const taskPaths = {
+  src: path.join(config.PATHS.src, config.PATHS.css, '/**/*.{' + config.TASKS.css.extensions + '}'),
+  dest: path.join(config.PATHS.tmp, config.PATHS.css),
 }
 
 // Processors
@@ -24,16 +24,16 @@ const processorsProd = [
 ];
 
 export function cssDev() {
-  return gulp.src(paths.src)
-    .pipe(sass(config.tasks.css.sass))
+  return gulp.src(taskPaths.src)
+    .pipe(sass(config.TASKS.css.sass))
     .pipe(postcss(processorsDev))
-    .pipe(gulp.dest(paths.dest));
+    .pipe(gulp.dest(taskPaths.dest));
 }
 
 export function cssProd() {
-  return gulp.src(paths.src)
-    .pipe(sass(config.tasks.css.sass))
+  return gulp.src(taskPaths.src)
+    .pipe(sass(config.TASKS.css.sass))
     .pipe(postcss(processorsProd))
     // .pipe(sourcemaps.write())
-    .pipe(gulp.dest(paths.dest));
+    .pipe(gulp.dest(taskPaths.dest));
 }
