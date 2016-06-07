@@ -1,7 +1,5 @@
 import gulp from 'gulp';
 
-import config from '../config';
-
 import { serve, reload } from './serve';
 import { watch } from './watch';
 import { referenceContent, referenceAll } from './reference';

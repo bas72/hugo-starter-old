@@ -6,11 +6,12 @@ import autoprefixer from 'autoprefixer';
 import cssnano from 'cssnano';
 
 import path from 'path'
-import config from '../config.json'
+import { loadConfig } from './config';
+const { PATHS, TASKS } = loadConfig();
 
 const taskPaths = {
-  src: path.join(config.PATHS.src, config.PATHS.css, '/**/*.{' + config.TASKS.css.extensions + '}'),
-  dest: path.join(config.PATHS.tmp, config.PATHS.css),
+  src: path.join(PATHS.src, PATHS.css, '/**/*.{' + TASKS.css.extensions + '}'),
+  dest: path.join(PATHS.tmp, PATHS.css),
 }
 
 // Processors
@@ -25,14 +26,14 @@ const processorsProd = [
 
 export function cssDev() {
   return gulp.src(taskPaths.src)
-    .pipe(sass(config.TASKS.css.sass))
+    .pipe(sass(TASKS.css.sass))
     .pipe(postcss(processorsDev))
     .pipe(gulp.dest(taskPaths.dest));
 }
 
 export function cssProd() {
   return gulp.src(taskPaths.src)
-    .pipe(sass(config.TASKS.css.sass))
+    .pipe(sass(TASKS.css.sass))
     .pipe(postcss(processorsProd))
     // .pipe(sourcemaps.write())
     .pipe(gulp.dest(taskPaths.dest));

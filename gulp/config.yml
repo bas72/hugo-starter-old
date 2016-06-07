@@ -1,0 +1,33 @@
+PATHS:
+  src: "./src"
+  tmp: "./.tmp"
+  dest: "./public"
+
+  css: "css"
+  js: "js"
+  images: "img"
+  hugo: "src/hugo"
+
+TASKS:
+  browserSync:
+  css:
+    extensions:
+      - "scss"
+      - "css"
+    sass:
+      indentedSyntax: false
+      includePaths":
+  js:
+    extensions:
+      - "js"
+  images:
+    extensions:
+      - "jpg"
+      - "png"
+      - "gif"
+      - "svg"
+  hugo:
+    layouts: "hugo/layouts"
+    content: "hugo/content"
+    archetypes: "hugo/archetypes"
+    extensions: ""

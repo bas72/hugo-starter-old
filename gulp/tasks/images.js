@@ -3,11 +3,12 @@ import imagemin from 'gulp-imagemin';
 import changed from 'gulp-changed';
 
 import path from 'path'
-import config from '../config.json'
+import { loadConfig } from './config';
+const { PATHS, TASKS } = loadConfig();
 
 const taskPaths = {
-  src: path.join(config.PATHS.src, config.PATHS.images, '/**/*.{' + config.TASKS.images.extensions + '}'),
-  dest: path.join(config.PATHS.tmp, config.PATHS.images)
+  src: path.join(PATHS.src, PATHS.images, '/**/*.{' + TASKS.images.extensions + '}'),
+  dest: path.join(PATHS.tmp, PATHS.images)
 }
 
 export function images() {

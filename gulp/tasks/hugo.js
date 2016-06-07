@@ -4,11 +4,12 @@ import gutil from 'gulp-util';
 import del from 'del';
 
 import path from 'path'
-import config from '../config.json'
+import { loadConfig } from './config';
+const { PATHS, TASKS } = loadConfig();
 
 function hugo(drafts) {
-    var src = path.join(process.cwd(), config.PATHS.hugo);
-    var dst = path.join(process.cwd(), config.PATHS.dest);
+    var src = path.join(process.cwd(), PATHS.hugo);
+    var dst = path.join(process.cwd(), PATHS.dest);
 
     gutil.log('src: ' + src + ' dst: ' + dst);
 
@@ -27,8 +28,8 @@ export function hugoDev(done) {
 }
 
 export function hugoDelete(done) {
-    var dst1 = path.join(process.cwd(), config.PATHS.dest);
-    var dst2 = path.join(process.cwd(), config.PATHS.hugo, config.PATHS.dest);
+    var dst1 = path.join(process.cwd(), PATHS.dest);
+    var dst2 = path.join(process.cwd(), PATHS.hugo, PATHS.dest);
     del.sync(dst1);
     del.sync(dst2);
     done();
