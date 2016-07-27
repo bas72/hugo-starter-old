@@ -10,12 +10,12 @@ import { cssDev, cssProd } from './css';
 import { js } from './js';
 import { images } from './images'
 
-const src = '_src'
+const src = 'src'
 const siteRoot = 'public';
-const hugoPath = src + 'hugo' + '/**/*'
-const cssPath = src + 'css' + '/**/*'
-const jsPath = src + 'js' + '/**/*'
-const imgPath = src+ 'img' + '/**/*'
+const hugoPath = src + '/hugo' + '/**/*'
+const cssPath = src + '/css' + '/**/*'
+const jsPath = src + '/js' + '/**/*'
+const imgPath = src+ '/img' + '/**/*'
 
 // Builds
 gulp.task(
@@ -48,10 +48,10 @@ function serveNew(done) {
       baseDir: siteRoot
     }
   });
-  gulp.watch(['src/hugo/layouts/**/*', 'src/hugo/content/**/*', 'src/hugo/archetypes/**/*']).on("change", gulp.series(hugoDev, reload));
-  gulp.watch(cssPath, gulp.series(cssDev, hugoDelete, hugoDev, revisionDev, reload));
-  gulp.watch(jsPath, gulp.series(js, hugoDelete, hugoDev, revisionDev, reload));
-  gulp.watch(imgPath.images, gulp.series(images, hugoDelete, hugoDev, revisionDev, reload));
+  gulp.watch(hugoPath, gulp.series(hugoDev));
+  gulp.watch(cssPath, gulp.series(cssDev, hugoDelete, hugoDev, revisionDev));
+  gulp.watch(jsPath, gulp.series(js, hugoDelete, hugoDev, revisionDev));
+  gulp.watch(imgPath.images, gulp.series(images, hugoDelete, hugoDev, revisionDev));
   //gulp.watch(cssFiles, gulp.series(css));
   done();
 }
