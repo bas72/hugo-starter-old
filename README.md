@@ -6,6 +6,7 @@
 
 ### Minor
 - [ ] Change 'public' to 'dist' (obviously change gulp files as well)
+- [ ] Change src to _src
 - [ ] Extract postcss plugins to config file
 - [ ] Setup gulp imagemin
 - [ ] Finish replacing paths for config references
