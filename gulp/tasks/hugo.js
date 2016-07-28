@@ -13,7 +13,7 @@ function hugo(drafts) {
 
     gutil.log('src: ' + src + ' dst: ' + dst);
 
-    var cmd = 'hugo --config=src/hugo/config.yaml -s ' + src + ' -d ' + dst;
+    var cmd = 'hugo --config=_src/hugo/config.yaml -s ' + src + ' -d ' + dst;
     if (drafts) {
         cmd += ' --buildDrafts=true --verbose=true --baseUrl="http://localhost:3000/" ';
     }

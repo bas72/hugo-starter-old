@@ -1,12 +1,12 @@
 PATHS:
-  src: "./src"
+  src: "./_src"
   tmp: "./.tmp"
-  dest: "./public"
+  dest: "./dist"
 
   css: "css"
   js: "js"
   images: "img"
-  hugo: "src/hugo"
+  hugo: "_src/hugo"
 
 TASKS:
   browserSync:
@@ -26,8 +26,3 @@ TASKS:
       - "png"
       - "gif"
       - "svg"
-  hugo:
-    layouts: "hugo/layouts"
-    content: "hugo/content"
-    archetypes: "hugo/archetypes"
-    extensions: ""

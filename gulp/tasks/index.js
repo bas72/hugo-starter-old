@@ -1,8 +1,6 @@
 import gulp from 'gulp';
 const browserSync = require('browser-sync').create();
 
-import { serve, reload } from './serve';
-import { watch } from './watch';
 import { referenceContent, referenceAll } from './reference';
 import { hugoDev, hugoProd, hugoDelete } from './hugo';
 import { revisionDev, revisionProd } from './revision';
@@ -10,42 +8,52 @@ import { cssDev, cssProd } from './css';
 import { js } from './js';
 import { images } from './images'
 
-const src = 'src'
+import path from 'path'
+import { loadConfig } from './config';
+const { PATHS, TASKS } = loadConfig();
+
+const src = '_src'
 const siteRoot = 'public';
 const hugoPath = src + '/hugo' + '/**/*'
 const cssPath = src + '/css' + '/**/*'
 const jsPath = src + '/js' + '/**/*'
 const imgPath = src+ '/img' + '/**/*'
 
-// Builds
 gulp.task(
   'dev',
   gulp.series(
     gulp.parallel(cssDev, js, images),
-    hugoDelete,
-    hugoDev,
+    gulp.series(hugoDelete, hugoProd),
     revisionDev,
-    // gulp.parallel(serve, watch)
-    serveNew
+    serve
   )
 );
 
 gulp.task(
-  'prod',
+  'assetsStep',
   gulp.series(
-    gulp.parallel(cssProd, js, images),
-    hugoDelete,
-    hugoProd,
-    revisionProd,
-    referenceAll
+    gulp.parallel(cssProd, js, images)
+  )
+);
+gulp.task(
+  'hugoStep',
+  gulp.series(
+    hugoDelete, hugoProd
+  )
+);
+gulp.task(
+  'referenceStep',
+  gulp.series(
+    revisionProd, referenceAll
   )
 );
 
-function serveNew(done) {
+//Serve + Watch
+function serve(done) {
   browserSync.init({
-    files: [siteRoot + '/**'],
+    files: [PATHS.dest + '/**'],
     server: {
-      baseDir: siteRoot
+      baseDir: PATHS.dest
     }
   });
   gulp.watch(hugoPath, gulp.series(hugoDev));

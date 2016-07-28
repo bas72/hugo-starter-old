@@ -12,3 +12,6 @@
 - [ ] Finish replacing paths for config references
 - [ ] Finish changing old var refs (eg. reload) to es6 imports
 - [ ] Make a separate dev and prod js task which utilises sourcemaps etc
+
+### FAQ's
+- No need for hugoDelete in watch tasks because only needs to be done once, and is performed at the start
