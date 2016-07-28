@@ -12,12 +12,10 @@ import path from 'path'
 import { loadConfig } from './config';
 const { PATHS, TASKS } = loadConfig();
 
-const src = '_src'
-const siteRoot = 'public';
-const hugoPath = src + '/hugo' + '/**/*'
-const cssPath = src + '/css' + '/**/*'
-const jsPath = src + '/js' + '/**/*'
-const imgPath = src+ '/img' + '/**/*'
+// const hugoPath = path.join(PATHS.src, PATHS.hugo, '/**/*');
+// const cssPath = path.join(PATHS.src, PATHS.css, '/**/*');
+// const jsPath = path.join(PATHS.src, PATHS.js, '/**/*');
+// const imgPath = {path.join(PATHS.src, PATHS.img, '/**/*');
 
 gulp.task(
   'dev',
@@ -56,11 +54,10 @@ function serve(done) {
       baseDir: PATHS.dest
     }
   });
-  gulp.watch(hugoPath, gulp.series(hugoDev));
-  gulp.watch(cssPath, gulp.series(cssDev, hugoDelete, hugoDev, revisionDev));
-  gulp.watch(jsPath, gulp.series(js, hugoDelete, hugoDev, revisionDev));
-  gulp.watch(imgPath.images, gulp.series(images, hugoDelete, hugoDev, revisionDev));
-  //gulp.watch(cssFiles, gulp.series(css));
+  gulp.watch(path.join(PATHS.src, PATHS.hugo, '/**/*'), gulp.series(hugoDev));
+  gulp.watch(path.join(PATHS.src, PATHS.css, '/**/*'), gulp.series(cssDev, hugoDelete, hugoDev, revisionDev));
+  gulp.watch(path.join(PATHS.src, PATHS.js, '/**/*'), gulp.series(js, hugoDelete, hugoDev, revisionDev));
+  gulp.watch(path.join(PATHS.src, PATHS.images, '/**/*'), gulp.series(images, hugoDelete, hugoDev, revisionDev));
   done();
 }
 

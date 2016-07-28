@@ -8,7 +8,7 @@ import { loadConfig } from './config';
 const { PATHS, TASKS } = loadConfig();
 
 function hugo(drafts) {
-    var src = path.join(process.cwd(), PATHS.hugo);
+    var src = path.join(process.cwd(), PATHS.src + '/' + PATHS.hugo);
     var dst = path.join(process.cwd(), PATHS.dest);
 
     gutil.log('src: ' + src + ' dst: ' + dst);
@@ -29,7 +29,7 @@ export function hugoDev(done) {
 
 export function hugoDelete(done) {
     var dst1 = path.join(process.cwd(), PATHS.dest);
-    var dst2 = path.join(process.cwd(), PATHS.hugo, PATHS.dest);
+    var dst2 = path.join(process.cwd(), PATHS.src + '/' + PATHS.hugo, PATHS.dest);
     del.sync(dst1);
     del.sync(dst2);
     done();

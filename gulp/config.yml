@@ -6,7 +6,7 @@ PATHS:
   css: "css"
   js: "js"
   images: "img"
-  hugo: "_src/hugo"
+  hugo: "hugo"
 
 TASKS:
   browserSync:

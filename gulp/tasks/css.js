@@ -11,7 +11,8 @@ const { PATHS, TASKS } = loadConfig();
 
 const taskPaths = {
   src: path.join(PATHS.src, PATHS.css, '/**/*.{' + TASKS.css.extensions + '}'),
-  dest: path.join(PATHS.tmp, PATHS.css),
+  // dest: path.join(PATHS.tmp, PATHS.css),
+  dest: PATHS.tmp + '/' + PATHS.css,
 }
 
 // Processors
