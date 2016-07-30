@@ -72,8 +72,8 @@ Temporary Items
 
 ### Hugo ###
 hugo.exe
-/public/
-/.tmp/
+dist
+.tmp
 
 ### Sass ###
 .sass-cache/
