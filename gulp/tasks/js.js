@@ -3,11 +3,12 @@ import jshint from 'gulp-jshint';
 import uglify from 'gulp-uglify';
 
 import path from 'path'
-import config from '../config.json'
+import { loadConfig } from './config';
+const { PATHS, TASKS } = loadConfig();
 
 const taskPaths = {
-  src: path.join(config.PATHS.src, config.PATHS.js, '/**/*.{' + config.TASKS.js.extensions + '}'),
-  dest: path.join(config.PATHS.tmp, config.PATHS.js)
+  src: path.join(PATHS.src, PATHS.js, '/**/*.{' + TASKS.js.extensions + '}'),
+  dest: path.join(PATHS.tmp, PATHS.js)
 }
 
 export function js() {

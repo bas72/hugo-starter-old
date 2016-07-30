@@ -12,11 +12,6 @@ import path from 'path'
 import { loadConfig } from './config';
 const { PATHS, TASKS } = loadConfig();
 
-// const hugoPath = path.join(PATHS.src, PATHS.hugo, '/**/*');
-// const cssPath = path.join(PATHS.src, PATHS.css, '/**/*');
-// const jsPath = path.join(PATHS.src, PATHS.js, '/**/*');
-// const imgPath = {path.join(PATHS.src, PATHS.img, '/**/*');
-
 gulp.task(
   'dev',
   gulp.series(
